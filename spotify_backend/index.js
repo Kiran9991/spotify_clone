@@ -13,8 +13,6 @@ mongoose.connect(
 ).then((data) => console.log('connected to mongo!'))
 .catch((error) => console.log('failed to connect to mongo!',error))
 
-
-
 // API : GET type : / : return text "hello world"
 app.get('/', (req, res) => {
     // req contains all data for the request
