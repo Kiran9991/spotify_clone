@@ -8,6 +8,7 @@ const { getToken } = require('../utils/helpers');
 router.post('/register', async (req, res) => {
     // This code is run when the /register api is called as a POST request
     // My req.body will be of the format { email, password, firstName, lastName, userName }
+
     const { email, password, firstName, lastName, username } = req.body;
 
     // Step 2: Does a user with this email already exist? If yes, we throw an error.
@@ -23,7 +24,7 @@ router.post('/register', async (req, res) => {
     // Step 3: Create a new user in the DB
     // Step 3.2: We do not store passwords in plain text.
     // xyz: we convert the plain text password to a hash.
-    const hashedPassword = bcrypt.has(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
     const newUserData = { 
         email, 
         password: hashedPassword, 
@@ -44,5 +45,7 @@ router.post('/register', async (req, res) => {
     return res.json(userToReturn);
 });
 
+
+module.exports = router;
 
 
