@@ -5,6 +5,7 @@ const JwtStrategy = require('passport-jwt').Strategy,
 const passport = require('passport');
 const User = require('./models/User');
 const authRoutes = require('./routes/auth');
+const songRoutes = require("./routes/song");
 require('dotenv').config();
 const app = express();
 const port = 8000;
@@ -45,6 +46,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/auth', authRoutes);
+app.use('/song', songRoutes);
 
 // Now we want to tell express that our server will run on localhost:8000
 app.listen(port, () => {
