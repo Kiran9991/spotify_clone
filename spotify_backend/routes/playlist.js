@@ -3,6 +3,7 @@ const passport = require("passport");
 const router = express.Router();
 const Playlist = require("../models/Playlist");
 const Song = require("../models/Song");
+const User = require('../models/User');
 
 // Route 1: Create a playlist
 router.post(
@@ -38,7 +39,9 @@ router.get(
   async (req, res) => {
     // This concept is called req.params
     const playlistId = req.params.playlistId;
-    const playlist = await Playlist.findOne({ _id: playlistId });
+    // console.log('playlistid', playlistId, playlistId.length);
+    const playlist = await Playlist.findOne({ _id: playlistId });//error when last char is changed to unknown
+    // console.log('playlist', playlist)
     if(!playlist) {
         return res.status(301).json({ err: "Invalid Id" });
     }
@@ -54,8 +57,9 @@ router.get(
     const artistId = req.params.artistId;
 
     const artist = await User.findOne({ _id: artistId });
+
     if(!artist) {
-      return res.status(304).json({ err: "Invalid Artist Id" });
+      return res.status(304).json({ err: "Invalid Artist Id" });//when err response is not showing
     }
 
     const playlists = await Playlist.find({ owner: artistId });
@@ -72,23 +76,27 @@ router.post(
     const { playlistId, songId } = req.body;
     // Step 0: Get the playlist if valid
     const playlist = await Playlist.findOne({ _id: playlistId });
+
     if(!playlist) {
       return res.status(304).json({ err: `Playlist does not exist ` });
     }
     // Step 1: Check if currentUser owns the playlist
+    // console.log(playlist.owner , currentUser._id, playlist.owner == currentUser._id);
+    // console.log(playlist.collaborators, currentUser, !playlist.collaborators.includes(currentUser._id))
     if(
-      playlist.owner !== currentUser._id || 
+      playlist.owner != currentUser._id && 
       !playlist.collaborators.includes(currentUser._id)
     ) {
         return res.status(400).json({ err: "Not Allowed" });
     }
     // Step 2: Check if the song is a valid song
     const song = await Song.findOne({ _id: songId }); 
+    
     if(!song) {
       return res.status(304).json({ err: "Song does not exist " });
     }
     // Step 3: We can now simply add the song to the playlist
-    playlist.songs.push(songId);
+    playlist.songs.push(song);
     await playlist.save();
 
     return res.status(200).json(playlist);
