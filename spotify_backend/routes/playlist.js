@@ -84,7 +84,7 @@ router.post(
     // console.log(playlist.owner , currentUser._id, playlist.owner == currentUser._id);
     // console.log(playlist.collaborators, currentUser, !playlist.collaborators.includes(currentUser._id))
     if(
-      playlist.owner != currentUser._id && 
+      !playlist.owner.equals(currentUser._id) && 
       !playlist.collaborators.includes(currentUser._id)
     ) {
         return res.status(400).json({ err: "Not Allowed" });
