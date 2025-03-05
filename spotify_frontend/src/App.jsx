@@ -12,6 +12,7 @@ function App() {
                 path='/'
                 element={<div>Hello</div>}    
             />
+            
             <Route 
                 path='/login'
                 element={<LoginComponent/>}    
