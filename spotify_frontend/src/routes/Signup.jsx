@@ -5,7 +5,7 @@ import spotify_logo from "../assets/spotify_logo.svg";
 import TextInput from "../components/TextInput";
 import PasswordInput from "../components/PasswordInput";
 
-export default function LoginComponent() {
+export default function SignupComponent() {
   return (
     <div className="bg-white h-full w-full flex flex-col items-center ">
       <div
@@ -30,30 +30,41 @@ export default function LoginComponent() {
       >
         <div
           className="
-          font-bold mb-6
+          font-bold mb-6 text-2xl
           "
         >
-          To continue, log in to spotify.
+          Sign up for free to start listening.
         </div>
         <TextInput
-          label={"Email address or username"}
-          placeholder={"Email address or username"}
-          className={`my-2`}
+          label={"What's your email"}
+          placeholder={"Enter your email."}
+          className={`my-6`}
+        />
+        <TextInput
+          label={"Confirm your email"}
+          placeholder={"Enter your email again."}
+          className={`mb-6`}
         />
         <PasswordInput
-          label={"Password"}
-          placeholder={"Password"}
+          label={"Create a password"}
+          placeholder={"Enter a strong password here"}
+        />
+
+        <TextInput
+          label={"What's should we call you?"}
+          placeholder={"Enter a profile name."}
+          className={`my-6`}
         />
 
         <div className=" w-full
-         flex items-center justify-end my-8
+         flex items-center justify-center my-8
         ">
         <button
         className="bg-green-400
         font-semibold px-10 p-3
         rounded-full
         "
-        >LOG IN</button>
+        >SIGN UP</button>
         </div>
         <div className="w-full border border-solid
         border-gray-300"></div>
@@ -61,7 +72,7 @@ export default function LoginComponent() {
         <div className="my-6 text-lg
         font-semibold
         ">
-          Don't have an account?
+          Already have an account?
         </div>
 
         <div className="
@@ -71,8 +82,8 @@ export default function LoginComponent() {
         border-gray-500
         text-gray-500 
         ">
-          <Link to='/signup'>
-          SIGN UP FOR SPOTIFY
+        <Link to='/login'>
+          LOG IN INSTEAD
           </Link>
         </div>
         
