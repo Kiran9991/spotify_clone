@@ -7,7 +7,7 @@ export default function IconText({ iconName, displayText, active }) {
       <div className="logoDiv px-5 py-2">
         <Icon
           icon={iconName}
-          fontSize={25}
+          fontSize={27}
           color={active ? "white" : "gray"}
           
         />
