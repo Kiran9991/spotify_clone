@@ -1,8 +1,8 @@
 import React from "react";
 
 import spotify_white_logo from "../assets/Spotify_white_color_logo.png";
-import IconText from '../components/IconText';
-import { Icon } from '@iconify/react'
+import IconText from "../components/IconText";
+import { Icon } from "@iconify/react";
 import TextWithHover from "../components/TextWithHover";
 
 export default function HomeComponent() {
@@ -10,9 +10,7 @@ export default function HomeComponent() {
     <div className="h-full w-full flex">
       <div className="SideBar h-full w-1/5 bg-black flex flex-col justify-between pb-10">
         <div>
-          <div
-            className="spotifyLogo p-6"
-          >
+          <div className="spotifyLogo p-6">
             <img
               src={spotify_white_logo}
               className=""
@@ -56,53 +54,115 @@ export default function HomeComponent() {
       </div>
 
       <div className="h-full w-4/5 bg-[#121212]">
-
-        <div className="NavBar text-white
+        <div
+          className="NavBar text-white
         bg-black w-full h-1/10 flex items-center justify-between
         bg-opacity-30
-        ">
+        "
+        >
           <div className="ArrowIconContent ml-10 flex justify-between w-[70px]">
-            <div className="bg-gray-900 hover:bg-black rounded-full p-0.5" >
-          <Icon icon="ep:arrow-left" color="white" width="25" height="25" />
+            <div className="bg-gray-900 hover:bg-black rounded-full p-0.5">
+              <Icon icon="ep:arrow-left" color="white" width="25" height="25" />
             </div>
             <div className="bg-gray-900 hover:bg-black rounded-full p-0.5">
-          <Icon icon="ep:arrow-right" color="white" width="25" height="25" />
-          </div>
+              <Icon
+                icon="ep:arrow-right"
+                color="white"
+                width="25"
+                height="25"
+              />
+            </div>
           </div>
 
-          <div className="navrightcontent 
+          <div
+            className="navrightcontent 
           flex items-center h-full w-1/2 justify-end
-          ">
-            <div className="w-3/5 flex justify-around h-full
+          "
+          >
+            <div
+              className="w-3/5 flex justify-around h-full
             items-center
-            ">
-            <TextWithHover displayText={'Premium'}/>
-            <TextWithHover displayText={'Support'}/>
-            <TextWithHover displayText={'Download'}/>
-            <div className="h-1/2 border-r border-white"
-            ></div>
+            "
+            >
+              <TextWithHover displayText={"Premium"} />
+              <TextWithHover displayText={"Support"} />
+              <TextWithHover displayText={"Download"} />
+              <div className="h-1/2 border-r border-white"></div>
             </div>
 
-            <div className="w-2/5 flex justify-around h-full
+            <div
+              className="w-2/5 flex justify-around h-full
             items-center
-            ">
-            <TextWithHover displayText={'Sign up'}/>
+            "
+            >
+              <TextWithHover displayText={"Sign up"} />
 
-            <div className="
+              <div
+                className="
             bg-white text-black h-2/3 px-8 rounded-full
             flex items-center font-semibold cursor-pointer
-            ">Login</div>
+            "
+              >
+                Login
+              </div>
             </div>
-
           </div>
-
-
         </div>
 
-        <div className="Content">
-
+        <div className="Content p-8">
+          <PlaylistView/>
         </div>
       </div>
     </div>
   );
+}
+
+const PlaylistView = () => {
+  return <div className="text-white">
+    <div className="text-2xl font-semibold mb-5">
+      Focus
+    </div>
+    <div className="w-full flex justify-between "><Card
+    title={'Peacfull Piano'}
+    description={'Relax and indulge with beautiful piano pieces'}
+    />
+    <Card
+    title={'Peacfull Piano'}
+    description={'Relax and indulge with beautiful piano pieces'}
+    />
+    <Card
+    title={'Peacfull Piano'}
+    description={'Relax and indulge with beautiful piano pieces'}
+    />
+    <Card
+    title={'Peacfull Piano'}
+    description={'Relax and indulge with beautiful piano pieces'}
+    />
+    <Card
+    title={'Peacfull Piano'}
+    description={'Relax and indulge with beautiful piano pieces'}
+    />
+    </div>
+  </div>
+}
+
+const Card = ({ title, description }) => {
+  return (
+    <div className="
+    bg-black bg-opacity-60 w-1/6 px-5 py-2 rounded-lg
+    ">
+      <div className="pb-4 pt-2">
+        <img
+        className="w-full rounded-md"
+        src="https://www.eurokidsindia.com/blog/wp-content/uploads/2024/02/science-exhibitions.jpg"
+        alt="labelr"
+        />
+
+      </div>
+      <div className="text-white text-sm font-semibold">{title}</div>
+      <div className="text-gray-500
+      text-sm
+      ">{description}</div>
+    </div>
+  )
 }
