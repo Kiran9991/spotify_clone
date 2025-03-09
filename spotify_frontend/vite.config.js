@@ -8,7 +8,8 @@ export default defineConfig({
     extend: {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
-      }
+      },
+      
     }
   },
   plugins: [react(),tailwindcss()],
