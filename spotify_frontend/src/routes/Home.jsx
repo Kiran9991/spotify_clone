@@ -5,6 +5,35 @@ import IconText from "../components/IconText";
 import { Icon } from "@iconify/react";
 import TextWithHover from "../components/TextWithHover";
 
+const cardsData = [
+  {
+    title: "Mountain Landscape",
+    description: "A breathtaking view of mountains",
+    imageUrl: "https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=",
+  },
+  {
+    title: "Serene Mountains",
+    description: "Calm and peaceful mountain landscape",
+    imageUrl: "https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8=",
+  },
+  {
+    title: "Sunset Beach",
+    description: "Enjoy the peaceful sunset by the beach",
+    imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+  },
+  {
+    title: "Starry Night",
+    description: "A beautiful view of the starry sky",
+    imageUrl: "https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3",
+  },
+  {
+    title: "Forest Pathway",
+    description: "Walk through the misty forest trail",
+    imageUrl: "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0",
+  }
+];
+
+
 export default function HomeComponent() {
   return (
     <div className="h-full w-full flex">
@@ -110,9 +139,9 @@ export default function HomeComponent() {
         </div>
 
         <div className="Content p-8 pt-0 overflow-auto">
-          <PlaylistView titleText={'Focus'} cardObjects={'cardObjs'} />
-          <PlaylistView titleText={'Spotify-Playlist'} cardObjects={'cardObjs'} />
-          <PlaylistView titleText={'Sound of India'} cardObjects={'cardObjs'} />
+          <PlaylistView titleText={'Focus'} cardsData={cardsData} />
+          <PlaylistView titleText={'Spotify-Playlist'} cardsData={cardsData} />
+          <PlaylistView titleText={'Sound of India'} cardsData={cardsData} />
         </div>
       </div>
     </div>
@@ -134,32 +163,6 @@ const PlaylistView = ({ titleText, cardsData }) => {
           />
         })
       }
-      
-      <Card
-    title={cardsData}
-    description={'Relax and indulge with beautiful piano pieces'}
-    imageUrl="https://www.eurokidsindia.com/blog/wp-content/uploads/2024/02/science-exhibitions.jpg"
-    />
-    <Card
-    title={'Peacfull Piano'}
-    description={'Relax and indulge with beautiful piano pieces'}
-    imageUrl="https://www.eurokidsindia.com/blog/wp-content/uploads/2024/02/science-exhibitions.jpg"
-    />
-    <Card
-    title={'Peacfull Piano'}
-    description={'Relax and indulge with beautiful piano pieces'}
-    imageUrl="https://rukminim2.flixcart.com/image/850/1000/kpcy5jk0/poster/h/c/w/large-village-poster-scenery-scenrym-68-original-imag3m8vrkdztzva.jpeg?q=20&crop=false"
-    />
-    <Card
-    title={'Peacfull Piano'}
-    description={'Relax and indulge with beautiful piano pieces'}
-    imageUrl="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="
-    />
-    <Card
-    title={'Peacfull Piano'}
-    description={'Relax and indulge with beautiful piano pieces'}
-    imageUrl="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="
-    />
     </div>
   </div>
 }
@@ -173,7 +176,7 @@ const Card = ({ title, description, imageUrl }) => {
         <img
         className="w-full rounded-md"
         src={imageUrl}
-        alt="labelr"
+        alt="label"
         />
 
       </div>
