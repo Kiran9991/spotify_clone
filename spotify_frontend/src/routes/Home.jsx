@@ -53,7 +53,7 @@ export default function HomeComponent() {
         </div>
       </div>
 
-      <div className="h-full w-4/5 bg-[#121212]">
+      <div className="h-full w-4/5 bg-[#121212] overflow-auto">
         <div
           className="NavBar text-white
         bg-black w-full h-1/10 flex items-center justify-between
@@ -109,57 +109,75 @@ export default function HomeComponent() {
           </div>
         </div>
 
-        <div className="Content p-8">
-          <PlaylistView/>
+        <div className="Content p-8 pt-0 overflow-auto">
+          <PlaylistView titleText={'Focus'} cardObjects={'cardObjs'} />
+          <PlaylistView titleText={'Spotify-Playlist'} cardObjects={'cardObjs'} />
+          <PlaylistView titleText={'Sound of India'} cardObjects={'cardObjs'} />
         </div>
       </div>
     </div>
   );
 }
 
-const PlaylistView = () => {
-  return <div className="text-white">
+const PlaylistView = ({ titleText, cardsData }) => {
+  return <div className="text-white mt-8">
     <div className="text-2xl font-semibold mb-5">
-      Focus
+      {titleText}
     </div>
-    <div className="w-full flex justify-between "><Card
-    title={'Peacfull Piano'}
+    <div className="w-full flex justify-between space-x-4">
+      {
+        // cardsData will be an Array
+        cardsData.map((item) => {
+          return <Card title={item.title}
+          description={item.description}
+          imageUrl={item.imageUrl}
+          />
+        })
+      }
+      
+      <Card
+    title={cardsData}
     description={'Relax and indulge with beautiful piano pieces'}
+    imageUrl="https://www.eurokidsindia.com/blog/wp-content/uploads/2024/02/science-exhibitions.jpg"
     />
     <Card
     title={'Peacfull Piano'}
     description={'Relax and indulge with beautiful piano pieces'}
+    imageUrl="https://www.eurokidsindia.com/blog/wp-content/uploads/2024/02/science-exhibitions.jpg"
     />
     <Card
     title={'Peacfull Piano'}
     description={'Relax and indulge with beautiful piano pieces'}
+    imageUrl="https://rukminim2.flixcart.com/image/850/1000/kpcy5jk0/poster/h/c/w/large-village-poster-scenery-scenrym-68-original-imag3m8vrkdztzva.jpeg?q=20&crop=false"
     />
     <Card
     title={'Peacfull Piano'}
     description={'Relax and indulge with beautiful piano pieces'}
+    imageUrl="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="
     />
     <Card
     title={'Peacfull Piano'}
     description={'Relax and indulge with beautiful piano pieces'}
+    imageUrl="https://media.istockphoto.com/id/517188688/photo/mountain-landscape.jpg?s=612x612&w=0&k=20&c=A63koPKaCyIwQWOTFBRWXj_PwCrR4cEoOw2S9Q7yVl8="
     />
     </div>
   </div>
 }
 
-const Card = ({ title, description }) => {
+const Card = ({ title, description, imageUrl }) => {
   return (
     <div className="
-    bg-black bg-opacity-60 w-1/6 px-5 py-2 rounded-lg
+    bg-black bg-opacity-40 w-1/5 px-5 py-2 rounded-lg
     ">
       <div className="pb-4 pt-2">
         <img
         className="w-full rounded-md"
-        src="https://www.eurokidsindia.com/blog/wp-content/uploads/2024/02/science-exhibitions.jpg"
+        src={imageUrl}
         alt="labelr"
         />
 
       </div>
-      <div className="text-white text-sm font-semibold">{title}</div>
+      <div className="text-white font-semibold py-3">{title}</div>
       <div className="text-gray-500
       text-sm
       ">{description}</div>
