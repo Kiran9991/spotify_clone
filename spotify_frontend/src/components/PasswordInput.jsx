@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function PasswordInput({ label, placeholder }) {
+export default function PasswordInput({ label, placeholder, value, setValue }) {
   return (
     <div className='flex flex-col
     space-y-2 w-full
     '>
-    <label for='124'
+    <label
     className='font-semibold'
     >{label}</label>
     <input type='password'
@@ -14,6 +14,10 @@ export default function PasswordInput({ label, placeholder }) {
     '
     placeholder={placeholder}
     id={label}
+    value={value}
+    onChange={(e) => {
+      setValue(e.target.value);
+    }}
     />
     </div>
     

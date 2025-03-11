@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function TextInput({ label, placeholder, className }) {
+export default function TextInput({ label, placeholder, className, value, setValue }) {
   return (
     <div className={`flex flex-col
     space-y-2 w-full ${className}`}>
-    <label for='124'
+    <label
     className='font-semibold'
     >{label}</label>
     <input type='text'
@@ -13,6 +13,10 @@ export default function TextInput({ label, placeholder, className }) {
     '
     placeholder={placeholder}
     id={label}
+    value={value}
+    onChange={(e) => {
+      setValue(e.target.value);
+    }}
     />
     </div>
     

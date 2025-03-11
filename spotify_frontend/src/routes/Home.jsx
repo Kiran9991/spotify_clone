@@ -33,7 +33,6 @@ const cardsData = [
   }
 ];
 
-
 export default function HomeComponent() {
   return (
     <div className="h-full w-full flex">

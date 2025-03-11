@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const JwtStrategy = require('passport-jwt').Strategy,
     ExtractJwt = require('passport-jwt').ExtractJwt;
 const passport = require('passport');
+const cors = require('cors');
 const User = require('./models/User');
 const authRoutes = require('./routes/auth');
 const songRoutes = require("./routes/song");
@@ -13,6 +14,7 @@ const port = 8000;
 
 
 app.use(express.json());
+app.use(cors());
 
 // connect mongodb to our node app.
 // mongooose.connect() takes 2 arguments: 1. which db to connect to (db, url), 2. 2. connection options
