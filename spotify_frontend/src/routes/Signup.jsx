@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 
 import spotify_logo from "../assets/spotify_logo.svg";
 import TextInput from "../components/TextInput";
@@ -13,6 +14,8 @@ export default function SignupComponent() {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [ ,setCookie] = useCookies(['token']);
+  const navigate = useNavigate();
 
   const signup = async () => {
     if(email !== confirmEmail) {
@@ -25,8 +28,13 @@ export default function SignupComponent() {
     }
     const response = await makeUnauthenticatedPostRequest('/auth/register', data);
     if(response && !response.err) {
-      console.log(response, 'success')
+      console.log(response, 'success');
+      const token = response.token;
+      const date = new Date();
+      date.setDate(date.getDate() + 30);
+      setCookie("token", token, { path: '/', expires: date });
       alert('succed');
+      navigate('/home');
     }else {
       console.log('failed');
       alert('failed');
